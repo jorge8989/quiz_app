@@ -3,9 +3,7 @@
 <p>Take one of our quizzes!!</p>
 
 <% @quizzes.all.each do |quiz| %>
-
-<%= link_to quiz.name, take_test_path(quiz.id) %>
-<p><%= quiz.description%></p>
-<hr>
-
+  <%= link_to quiz.name, take_test_path(quiz.id) %>
+  <p><%= quiz.description%></p>
+  <hr>
 <% end %>
