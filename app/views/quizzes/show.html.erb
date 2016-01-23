@@ -10,5 +10,26 @@
   <%= @quiz.description %>
 </p>
 
+<p>
+  <strong>Personalities</strong>
+  <table>
+    <tr>
+    <th>name</th>
+    <th>description</th>
+    <th></th>
+    </tr>
+  <% @quiz.personalities.each do |personality| %>
+  <tr>
+    <td><%= personality.name %></td>
+    <td><%= personality.description %></td>
+    <td>
+      <%= link_to 'show', personality_path(personality) %> | 
+      <%= link_to 'edit', edit_personality_path(personality) %> | 
+      <%= link_to 'delete', personality, method: :delete, data: {confirm: 'are you sure?'} %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+  <br>
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>
