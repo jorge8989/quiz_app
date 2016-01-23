@@ -18,19 +18,41 @@ function processQuiz() {
       }
   }
   
+  function maxFreq(personalityIds) {
+     var frequency = {};
+     var max = 0;
+     for (var i = 0; i < personalityIds.length; i++) {
+        frequency[personalityIds[i]] = (frequency[personalityIds[i]] || 0)+1;
+        if (frequency[personalityIds[i]] > max) {
+            var max = personalityIds[i];
+        }
+     }
+     
+     return max;
+  }
   
   function processAnswers() {
-      var answers = [] 
+      var answers = []
+      var personalityId;
       $('input[type="radio"]:checked').each(function(){
           answers.push(parseInt($(this).val()));
       });
-      console.log(answers)
+
+      personalityId = maxFreq(answers)
+      $.ajax({
+          url: '/personalities/'+personalityId+'.json',
+          dataType: 'json',
+          success: function(data) {
+              $quizForm.hide();
+              $('.your-personality').text('You are '+data.name)
+              $('.results-description').text(data.description)
+              $quizResults.show();
+          }
+      })
   }
   
   function handleEvents() {
       $submitButton.on('click', function() {
-         $quizForm.hide();
-         $quizResults.show();
          processAnswers();
       });
       $('input[type="radio"]').on('change', function() {
