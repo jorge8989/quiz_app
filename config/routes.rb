@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
  
-  root 'quizzes#index'
+  root 'dashboards#index'
   
   
   resources :questions do
