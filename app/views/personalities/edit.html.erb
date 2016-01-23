@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @personality %> |
-<%= link_to 'Back', personalities_path %>
+<%= link_to 'Back', quiz_path(@personality.quiz.id) %>
