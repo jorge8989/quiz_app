@@ -1,0 +1,19 @@
+<h1><%= @quiz.name %></h1>
+<span class="number-of-questions"><%= @quiz.questions.count %></span>
+<div class="quiz-form">
+  <% @questions.each do |question| %>
+   <strong><%= question.content %></strong>
+   <br>
+   <% question.quiz_options.each do |opt| %>
+     <%= radio_button_tag('question_'+question.id.to_s, opt.personality.id ) %>
+     <%= label_tag('question_'+question.id.to_s+'_'+opt.personality.id.to_s, opt.content) %>
+     <br>
+   <% end %>
+   <hr>
+  <% end %>
+<button class="submit-quiz">Submit form</button>
+</div>
+<div class="quiz-results">
+    <h2>You are </h2>
+    <p class="results-description"></p>
+</div>

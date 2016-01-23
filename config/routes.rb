@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   end
   resources :personalities, except: [:new, :create]
   resources :questions, except: [:new, :create]
+  
+  get '/take_test/:id', to: 'user_quizzes#take_quiz', as: 'take_test'
 
 end
