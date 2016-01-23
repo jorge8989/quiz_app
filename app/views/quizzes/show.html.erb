@@ -34,5 +34,27 @@
   <%= link_to 'add personality', new_quiz_personality_path(@quiz) %>
   
 <hr>
+
+<strong>Questions</strong>
+
+
+  <table>
+      <% @quiz.questions.each do |question| %>
+      <tr>
+        <td><%= question.content %></td>
+        <td>
+          <%= link_to 'show', question_path(question)%> | 
+          <%= link_to 'edit', edit_question_path(question)%> | 
+          <%= link_to 'delete', question, method: :delete, data: {confirm: 'are you sure?'} %>
+        </td>
+      </tr>
+      <% end %>
+  </table>
+  <br>
+  
+  <%= link_to 'add question', new_quiz_question_path(@quiz) %>
+
+<hr>
+
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>

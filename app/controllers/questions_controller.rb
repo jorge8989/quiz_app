@@ -27,23 +27,17 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
+        redirect_to quiz_path(@question.quiz.id), notice: 'Question was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   def destroy
+    @quiz = @question.quiz
     @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+     redirect_to quiz_path(@quiz), notice: 'Question was successfully destroyed.'
   end
 
   private
