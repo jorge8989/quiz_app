@@ -18,10 +18,20 @@ function processQuiz() {
       }
   }
   
+  
+  function processAnswers() {
+      var answers = [] 
+      $('input[type="radio"]:checked').each(function(){
+          answers.push(parseInt($(this).val()));
+      });
+      console.log(answers)
+  }
+  
   function handleEvents() {
       $submitButton.on('click', function() {
          $quizForm.hide();
          $quizResults.show();
+         processAnswers();
       });
       $('input[type="radio"]').on('change', function() {
           disableEnableSubmitButton();
