@@ -21,7 +21,7 @@
   <% end %>
 </table>
 <br>
-<%= link_to 'add new option', new_question_quiz_option_path(@question) %>
+<%= link_to 'add new option', new_question_quiz_option_path(@question), :class => "success button" %>
 <hr>
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', quiz_path(@question.quiz.id) %>
