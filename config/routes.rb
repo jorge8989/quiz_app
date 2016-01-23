@@ -3,8 +3,12 @@ Rails.application.routes.draw do
  
   root 'quizzes#index'
   
-  resources :quiz_options
-  resources :questions
+  
+  resources :questions do
+    resources :quiz_options, only: [:new, :create]
+  end
+  resources :quiz_options, except: [:new, :create]
+  
   resources :quizzes do
     resources :personalities, only: [:new, :create]
     resources :questions, only: [:new, :create]

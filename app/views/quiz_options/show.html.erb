@@ -6,4 +6,4 @@
 </p>
 
 <%= link_to 'Edit', edit_quiz_option_path(@quiz_option) %> |
-<%= link_to 'Back', quiz_options_path %>
+<%= link_to 'Back', question_path(@quiz_option.question.id) %>

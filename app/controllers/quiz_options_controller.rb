@@ -1,73 +1,56 @@
 class QuizOptionsController < ApplicationController
   before_action :set_quiz_option, only: [:show, :edit, :update, :destroy]
 
-  # GET /quiz_options
-  # GET /quiz_options.json
+
   def index
     @quiz_options = QuizOption.all
   end
 
-  # GET /quiz_options/1
-  # GET /quiz_options/1.json
   def show
   end
 
-  # GET /quiz_options/new
+
   def new
+    @question = Question.find(params[:question_id])
     @quiz_option = QuizOption.new
   end
 
-  # GET /quiz_options/1/edit
+
   def edit
   end
 
-  # POST /quiz_options
-  # POST /quiz_options.json
+
   def create
-    @quiz_option = QuizOption.new(quiz_option_params)
+    @question = Question.find(params[:question_id])
+    @quiz_option = @question.quiz_options.build(quiz_option_params)
 
-    respond_to do |format|
       if @quiz_option.save
-        format.html { redirect_to @quiz_option, notice: 'Quiz option was successfully created.' }
-        format.json { render :show, status: :created, location: @quiz_option }
+        redirect_to question_path(@question), notice: 'Quiz option was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @quiz_option.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
-  # PATCH/PUT /quiz_options/1
-  # PATCH/PUT /quiz_options/1.json
   def update
-    respond_to do |format|
       if @quiz_option.update(quiz_option_params)
-        format.html { redirect_to @quiz_option, notice: 'Quiz option was successfully updated.' }
-        format.json { render :show, status: :ok, location: @quiz_option }
+        redirect_to question_path(@quiz_option.question.id), notice: 'Quiz option was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @quiz_option.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /quiz_options/1
-  # DELETE /quiz_options/1.json
   def destroy
+    @question = @quiz_option.question
     @quiz_option.destroy
-    respond_to do |format|
-      format.html { redirect_to quiz_options_url, notice: 'Quiz option was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to question_path(@question.id), notice: 'Quiz option was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_quiz_option
       @quiz_option = QuizOption.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_option_params
       params.require(:quiz_option).permit(:content)
     end
