@@ -12,11 +12,13 @@ class QuizOptionsController < ApplicationController
 
   def new
     @question = Question.find(params[:question_id])
+    @quiz = @question.quiz
     @quiz_option = QuizOption.new
   end
 
 
   def edit
+    @quiz = @quiz_option.question.quiz
   end
 
 
@@ -52,6 +54,6 @@ class QuizOptionsController < ApplicationController
     end
 
     def quiz_option_params
-      params.require(:quiz_option).permit(:content)
+      params.require(:quiz_option).permit(:content, :personality_id)
     end
 end

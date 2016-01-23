@@ -12,7 +12,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+  <%= f.collection_select(:personality_id, @quiz.personalities, :id, :name, 
+                            {prompt: 'select personality'}) %>
+  </div>
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_field :content %>
