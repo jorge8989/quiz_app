@@ -42,6 +42,7 @@
       <% @quiz.questions.each do |question| %>
       <tr>
         <td><%= question.content %></td>
+        <td><%= question.quiz_options.count %> options</td>
         <td>
           <%= link_to 'show', question_path(question)%> | 
           <%= link_to 'edit', edit_question_path(question)%> | 
