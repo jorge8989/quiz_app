@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   resources :personalities, except: [:new, :create]
   resources :questions, except: [:new, :create]
   
-  get '/take_test/:id', to: 'user_quizzes#take_quiz', as: 'take_test'
+  get '/take_quiz/:id', to: 'user_quizzes#take_quiz', as: 'take_quiz'
 
 end

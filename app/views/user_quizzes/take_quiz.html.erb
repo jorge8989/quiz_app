@@ -16,4 +16,10 @@
 <div class="quiz-results">
     <h2 class="your-personality"></h2>
     <p class="results-description"></p>
+    <%= link_to root_path do %>
+      <button class="button">Take another quiz</button>
+    <% end %>
+    <%= link_to take_quiz_path(@quiz.id) do %>
+      <button class="button">Retake this quiz</button>
+    <% end %>
 </div>
