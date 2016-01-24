@@ -1,8 +1,8 @@
 <h2><%= @quiz.name %></h2>
-<span class="number-of-questions"><%= @quiz.questions.count %></span>
+<hr>
 <div class="quiz-form">
   <% @questions.each do |question| %>
-   <strong><%= question.content %></strong>
+   <strong class="quiz-question"><%= question.content %></strong>
    <br>
    <% question.quiz_options.each do |opt| %>
      <%= radio_button_tag('question_'+question.id.to_s, opt.personality.id ) %>

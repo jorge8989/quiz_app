@@ -2,7 +2,7 @@ function processQuiz() {
   var $quizForm = $('.quiz-form');
   var $quizResults = $('.quiz-results');
   var $submitButton = $('.submit-quiz');
-  var totalQuestions = parseInt($('.number-of-questions').html());
+  var totalQuestions = $('.quiz-question').length
   
   function init() {
       handleEvents();
@@ -31,7 +31,7 @@ function processQuiz() {
      return max;
   }
   
-  function processAnswers() {
+  function showResults() {
       var answers = []
       var personalityId;
       $('input[type="radio"]:checked').each(function(){
@@ -44,7 +44,7 @@ function processQuiz() {
           dataType: 'json',
           success: function(data) {
               $quizForm.hide();
-              $('.your-personality').text('You are '+data.name)
+              $('.your-personality').text(data.name)
               $('.results-description').text(data.description)
               $quizResults.show();
           }
@@ -53,7 +53,7 @@ function processQuiz() {
   
   function handleEvents() {
       $submitButton.on('click', function() {
-         processAnswers();
+         showResults();
       });
       $('input[type="radio"]').on('change', function() {
           disableEnableSubmitButton();

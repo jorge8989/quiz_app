@@ -24,6 +24,7 @@ class QuizOptionsController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
+    @quiz = @question.quiz
     @quiz_option = @question.quiz_options.build(quiz_option_params)
 
       if @quiz_option.save
