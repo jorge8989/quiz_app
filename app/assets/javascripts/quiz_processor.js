@@ -46,6 +46,7 @@ function processQuiz() {
               $quizForm.hide();
               $('.your-personality').text(data.name)
               $('.results-description').text(data.description)
+              $('.personality-image').attr('src', data.image_med_url);
               $quizResults.show();
           }
       })

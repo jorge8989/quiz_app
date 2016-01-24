@@ -1,6 +1,6 @@
 <h1>New Personality</h1>
 
-<%= form_for [@quiz, @personality] do |f| %>
+<%= form_for [@quiz, @personality], {multipart: true} do |f| %>
   <% if @personality.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@personality.errors.count, "error") %> prohibited this personality from being saved:</h2>
@@ -12,7 +12,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>

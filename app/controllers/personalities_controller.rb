@@ -50,6 +50,6 @@ class PersonalitiesController < ApplicationController
 
 
     def personality_params
-      params.require(:personality).permit(:name, :description)
+      params.require(:personality).permit(:name, :description, :image)
     end
 end
