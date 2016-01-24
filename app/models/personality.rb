@@ -1,6 +1,6 @@
 class Personality < ActiveRecord::Base
     belongs_to :quiz
-    has_many :quiz_options
+    has_many :quiz_options, dependent: :destroy
     validates :name, presence: true
     validates :description, presence: true
     validates :quiz_id, presence: true
