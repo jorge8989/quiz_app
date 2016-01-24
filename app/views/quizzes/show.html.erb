@@ -9,7 +9,10 @@
   <strong>Description:</strong>
   <%= @quiz.description %>
 </p>
-
+<strong>image</strong>
+<br>
+<%= image_tag @quiz.image.url(:medium) %>
+<hr>
 <p>
   <strong>Personalities (<%= @quiz.personalities.count %>)</strong>
   <table>

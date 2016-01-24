@@ -1,9 +1,15 @@
-<h1>Personality Quizzes App</h1>
+<h1>Personality Quizzes</h1>
 
 <p>Take one of our quizzes!!</p>
 
 <% @quizzes.all.each do |quiz| %>
-  <%= link_to quiz.name, take_quiz_path(quiz.id) %>
+  <h3><%= quiz.name %></h3>
+  <%= link_to take_quiz_path(quiz) do %>
+    <%= image_tag quiz.image.url(:medium) %>
+  <% end %>
   <p><%= quiz.description%></p>
+  <%= link_to take_quiz_path(quiz) do %>
+    <button class="button">Take this Quiz</button>
+  <% end %>
   <hr>
 <% end %>
