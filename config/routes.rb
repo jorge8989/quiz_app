@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
  
   root 'dashboards#index'
-  
+  devise_for :users
   
   resources :questions do
     resources :quiz_options, only: [:new, :create]
