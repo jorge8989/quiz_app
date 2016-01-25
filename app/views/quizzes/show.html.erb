@@ -9,6 +9,7 @@
   <strong>Description:</strong>
   <%= @quiz.description %>
 </p>
+<%= render 'shared/reference_table', quiz: @quiz %>
 <strong>image</strong>
 <br>
 <%= image_tag @quiz.image.url(:medium) %>
@@ -72,7 +73,6 @@
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>
 <hr>
-
 <%= link_to take_quiz_path(@quiz) do %>
   <button class="button">Take this test</button>
 <% end %>

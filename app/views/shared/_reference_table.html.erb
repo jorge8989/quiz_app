@@ -1,0 +1,12 @@
+<table>
+        <tr>
+          <th>Reference</th>
+          <th></th>
+        </tr>
+        <% quiz.personalities.each do |personality| %>
+        <tr>
+          <td><%=  personality.low_range %> - <%= personality.high_range %> points</td>
+          <td><%= personality.description%> </td>
+        </tr>
+        <% end %>
+    </table>
