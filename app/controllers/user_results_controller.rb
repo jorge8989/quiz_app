@@ -5,6 +5,10 @@ class UserResultsController < ApplicationController
     @user_results = UserResult.all.order('quiz_id ASC')
   end
   
+  def show
+    @user_result = UserResult.find(params[:id])
+  end
+  
   def new
     @user_result = User.new
   end

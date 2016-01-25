@@ -4,6 +4,7 @@ function processQuiz() {
   var $yourScore = $('.your-score');
   var $submitButton = $('.submit-quiz');
   var totalQuestions = $('.quiz-question').length
+  var $pointsField = $('#user_result_points');
   
   function init() {
       handleEvents();
@@ -26,7 +27,7 @@ function processQuiz() {
       });
       $quizForm.hide();
       $yourScore.text('score: '+points);
-      $('#user_result_points').attr('value', points);
+      $pointsField.attr('value', points);
       $quizResults.show();
   }
   

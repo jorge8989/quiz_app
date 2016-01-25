@@ -1,0 +1,15 @@
+<strong>User:</strong>
+<p><%= @user_result.user.email %></p>
+
+<strong>Score:</strong>
+<p><%= @user_result.points %></p>
+
+<hr>
+
+<strong>Quiz:</strong>
+<p><%= @user_result.quiz.name %></p>
+
+<strong>Quiz description:</strong>
+<p><%= @user_result.quiz.description %></p>
+
+<%= render 'shared/reference_table', quiz: @user_result.quiz %>

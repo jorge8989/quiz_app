@@ -18,7 +18,7 @@
         <td><%= user_result.quiz.name %></td>
         <td><%= user_result.user.email %></td>
         <td><%= user_result.points %></td>
-        <td><%= link_to 'Edit', edit_user_result_path(user_result) %></td>
+        <td><%= link_to 'See details', user_result_path(user_result) %></td>
         <td><%= link_to 'Destroy', user_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
