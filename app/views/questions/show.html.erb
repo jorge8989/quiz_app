@@ -11,7 +11,7 @@
   <% @question.quiz_options.each do |opt| %>
     <tr>
       <td><%= opt.content %></td>
-      <td><%= Personality.find(opt.personality.id).name %></td>
+      <td><%= opt.points %></td>
       <td>
         <%= link_to 'show', quiz_option_path(opt) %> | 
         <%= link_to 'edit', edit_quiz_option_path(opt) %> | 

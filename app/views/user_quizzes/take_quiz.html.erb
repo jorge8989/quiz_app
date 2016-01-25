@@ -1,16 +1,24 @@
 <h2><%= @quiz.name %></h2>
 <hr>
 <div class="quiz-form">
+       <table>
   <% @questions.each do |question| %>
-   <strong class="quiz-question"><%= question.content %></strong>
-   <br>
+       <tr>
+           <th class="quiz-question">
+             <%= question.content %>
+           </th>
+       </tr>
+    <tr>
    <% question.quiz_options.each do |opt| %>
-     <%= radio_button_tag('question_'+question.id.to_s, opt.personality.id ) %>
-     <%= label_tag('question_'+question.id.to_s+'_'+opt.personality.id.to_s, opt.content) %>
-     <br>
+     
+       <td>
+         <%= radio_button_tag('question_'+question.id.to_s, opt.points.to_s ) %> <%= opt.content%>
+       </td>
+     <td></td>
    <% end %>
-   <hr>
+   </tr>
   <% end %>
+ </table>
 <button class="submit-quiz button">Submit form</button>
 </div>
 <div class="quiz-results">

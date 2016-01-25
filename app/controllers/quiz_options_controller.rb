@@ -55,6 +55,6 @@ class QuizOptionsController < ApplicationController
     end
 
     def quiz_option_params
-      params.require(:quiz_option).permit(:content, :personality_id)
+      params.require(:quiz_option).permit(:content, :points)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160124230756) do
+ActiveRecord::Schema.define(version: 20160125020233) do
 
   create_table "personalities", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160124230756) do
     t.datetime "updated_at",     null: false
     t.integer  "question_id"
     t.integer  "personality_id"
+    t.integer  "points"
   end
 
   add_index "quiz_options", ["personality_id"], name: "index_quiz_options_on_personality_id"

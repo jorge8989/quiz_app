@@ -14,7 +14,8 @@
     </div>
   <% end %>
   <div class="field">
-  <%= f.collection_select(:personality_id, @quiz.personalities, :id, :name) %>
+    <%= f.label :points %><br>
+    <%= f.number_field :points %>
   </div>
   <div class="field">
     <%= f.label :content %><br>
