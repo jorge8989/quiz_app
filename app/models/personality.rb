@@ -1,7 +1,8 @@
 class Personality < ActiveRecord::Base
     belongs_to :quiz
-    validates :name, presence: true
     validates :description, presence: true
+    validates :low_range, presence: true
+    validates :high_range, presence: true
     validates :quiz_id, presence: true
     validates_uniqueness_of :name, scope: :quiz_id
     validates_uniqueness_of :description, scope: :quiz_id
