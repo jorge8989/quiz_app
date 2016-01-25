@@ -1,6 +1,7 @@
 class Quiz < ActiveRecord::Base
     has_many :personalities, dependent: :destroy
     has_many :questions, dependent: :destroy
+    has_many :user_results
     validates :name, presence: true
     validates :description, presence: true
     validates_uniqueness_of :name, scope: :description

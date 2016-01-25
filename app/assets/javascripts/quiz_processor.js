@@ -24,9 +24,9 @@ function processQuiz() {
       $('input[type="radio"]:checked').each(function(){
           points+= parseInt($(this).val());
       });
-      console.log(points)
       $quizForm.hide();
-      $yourScore.text('your score is '+points);
+      $yourScore.text('score: '+points);
+      $('#user_result_points').attr('value', points);
       $quizResults.show();
   }
   

@@ -25,7 +25,11 @@
     </tr>
   <% @quiz.personalities.each do |personality| %>
   <tr>
-    <td><%= image_tag personality.image.url(:thumb) %></td>
+    <td>
+    <% if personality.image_file_name? %>
+      <%= image_tag personality.image.url(:thumb) %>
+    <% end %>
+    </td>
     <td><%= personality.name %></td>
     <td><%= personality.description %></td>
     <td><%= personality.low_range %></td>

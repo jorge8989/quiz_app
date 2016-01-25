@@ -24,11 +24,22 @@
 <div class="quiz-results">
     <h2 class="your-score"></h2>
     <img src="" alt="" class="personality-image" />
-    <p class="results-description"></p>
-    <%= link_to root_path do %>
-      <button class="button">Take another quiz</button>
-    <% end %>
-    <%= link_to take_quiz_path(@quiz.id) do %>
-      <button class="button">Retake this quiz</button>
+    <table>
+        <tr>
+          <th>Reference</th>
+          <th></th>
+        </tr>
+        <% @quiz.personalities.each do |personality| %>
+        <tr>
+          <td><%=  personality.low_range %> - <%= personality.high_range %> points</td>
+          <td><%= personality.description%> </td>
+        </tr>
+        <% end %>
+    </table>
+    <%= form_for (UserResult.new ) do |f| %>
+      <%= f.hidden_field :points, value: "" %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :quiz_id, value: @quiz.id %>
+      <%= button_tag 'save results', type: 'submit', class: 'button' %>
     <% end %>
 </div>
