@@ -1,6 +1,6 @@
 class UserResultsController < ApplicationController
   before_action :set_user_result, only: [:destroy]
-  before_action :admin_user!
+  before_action :admin_user!, except: [:new, :create]
   
   def show
     @user_result = UserResult.find(params[:id])

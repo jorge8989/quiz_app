@@ -24,7 +24,6 @@
       <%= f.hidden_field :points, value: "" %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :quiz_id, value: @quiz.id %>
-      <%= button_tag 'save results', type: 'submit', class: 'button' %>
     <% end %>
     <hr>
     <%= link_to take_quiz_path(@quiz) do %>

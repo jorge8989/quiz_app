@@ -32,6 +32,7 @@ function processQuiz() {
       $('input[type="radio"]:checked').each(function(){
           points+= parseInt($(this).val());
       });
+      //AJAX
       $.ajax({
          url: '/quizzes/'+quizId+'.json',
          dataType: 'json',
@@ -40,6 +41,7 @@ function processQuiz() {
           var result;
           $.each(personalities, function(index, personality) {
             var references = _.range(personality.low_range, personality.high_range+1);
+            //the _.range functions is from the underscore framework
             if (references.indexOf(points) != -1) {
               result = personality;
             }
@@ -47,8 +49,17 @@ function processQuiz() {
           $personalityIdField.attr('value', result.id);
           $personalityDescription.text(result.description);
           $personalityImage.attr('src', result.image_med_url);
+          $.ajax({
+            type: 'POST',
+            url: $('form').attr('action'),
+            data: $('form').serialize(),
+            dataType: 'json',
+            success: function() {
+            }
+          });
          } 
       });
+      //AJAX
       $quizForm.hide();
       $yourScore.text('score: '+points);
       $pointsField.attr('value', points);
