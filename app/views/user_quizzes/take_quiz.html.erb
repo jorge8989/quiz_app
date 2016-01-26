@@ -1,24 +1,18 @@
 <h2><%= @quiz.name %></h2>
 <hr>
 <div class="quiz-form" data-id="<%= @quiz.id%>" data-total-questions="<%= @quiz.questions.count%>">
-       <table>
+  <table>
   <% @questions.each do |question| %>
-       <tr>
-           <th class="quiz-question">
-             <%= question.content %>
-           </th>
-       </tr>
     <tr>
+      <td><%= question.content %></td>
    <% question.quiz_options.each do |opt| %>
-     
        <td>
-         <%= radio_button_tag('question_'+question.id.to_s, opt.points.to_s ) %> <%= opt.content%>
+         <%= radio_button_tag('question_'+question.id.to_s, opt.points.to_s ) %> <%= opt.content %>
        </td>
-     <td></td>
    <% end %>
-   </tr>
+     </tr>
   <% end %>
- </table>
+  </table>
 <button class="submit-quiz button">Submit form</button>
 </div>
 <div class="quiz-results">
