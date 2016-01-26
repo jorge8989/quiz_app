@@ -5,6 +5,9 @@ class QuizzesController < ApplicationController
     @quizzes = Quiz.all
   end
 
+  def results
+    @quizzes = Quiz.all
+  end
 
   def show
   end
