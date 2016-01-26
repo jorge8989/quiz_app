@@ -32,7 +32,7 @@ function processQuiz() {
       $('input[type="radio"]:checked').each(function(){
           points+= parseInt($(this).val());
       });
-      //AJAX
+      //ajax call to get all the personalities values of this quiz 
       $.ajax({
          url: '/quizzes/'+quizId+'.json',
          dataType: 'json',
@@ -49,6 +49,7 @@ function processQuiz() {
           $personalityIdField.attr('value', result.id);
           $personalityDescription.text(result.description);
           $personalityImage.attr('src', result.image_med_url);
+          //this is the ajax call that saves the result
           $.ajax({
             type: 'POST',
             url: $('form').attr('action'),
