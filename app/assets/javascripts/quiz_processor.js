@@ -8,6 +8,7 @@ function processQuiz() {
   var $personalityDescription = $('.personality-description');
   var $pointsField = $('#user_result_points');
   var $personalityIdField = $('#user_result_personality_id');
+  var $personalityImage = $('.personality-image');
   
   
   var quizId = $quizForm.data('id');
@@ -36,13 +37,16 @@ function processQuiz() {
          dataType: 'json',
          success: function(data) {
           var personalities = data.personalities;
+          var result;
           $.each(personalities, function(index, personality) {
             var references = _.range(personality.low_range, personality.high_range+1);
             if (references.indexOf(points) != -1) {
-              $personalityIdField.attr('value', personality.id);
-              $personalityDescription.text(personality.description);
+              result = personality;
             }
           });
+          $personalityIdField.attr('value', result.id);
+          $personalityDescription.text(result.description);
+          $personalityImage.attr('src', result.image_med_url);
          } 
       });
       $quizForm.hide();
@@ -57,11 +61,11 @@ function processQuiz() {
       });
       $('input[type="radio"]').on('change', function() {
           disableEnableSubmitButton();
-      })
-  };
+      });
+  }
   
   init();
-};
+}
 
 $(function() {
    if ($(".quiz-form").length > 0) {
