@@ -4,7 +4,9 @@
   <strong>Name:</strong>
   <%= @personality.name %>
 </p>
-<%= image_tag @personality.image_med_url %>
+<% if @personality.image_file_name? %>
+  <%= image_tag @personality.image_med_url %>
+<% end %>
 <p>
   <strong>Description:</strong>
   <%= @personality.description %>

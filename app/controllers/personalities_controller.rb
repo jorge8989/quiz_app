@@ -1,6 +1,7 @@
 class PersonalitiesController < ApplicationController
   before_action :set_personality, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin_user!
 
 
   def show

@@ -1,6 +1,7 @@
 class QuizOptionsController < ApplicationController
   before_action :set_quiz_option, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin_user!
 
 
   def index
