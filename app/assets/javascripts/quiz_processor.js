@@ -4,14 +4,14 @@ function processQuiz() {
   var $quizResults = $('.quiz-results');
   var $yourScore = $('.your-score');
   var $submitButton = $('.submit-quiz');
-  var totalQuestions = $('.quiz-question').length
   var $personalityDescription = $('.personality-description');
   var $pointsField = $('#user_result_points');
   var $personalityIdField = $('#user_result_personality_id');
   var $personalityImage = $('.personality-image');
   
-  
+  //DOM data
   var quizId = $quizForm.data('id');
+  var totalQuestions = $quizForm.data('total-questions');
   
   function init() {
       handleEvents();

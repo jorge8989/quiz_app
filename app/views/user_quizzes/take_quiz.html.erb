@@ -1,6 +1,6 @@
 <h2><%= @quiz.name %></h2>
 <hr>
-<div class="quiz-form" data-id="<%= @quiz.id%>">
+<div class="quiz-form" data-id="<%= @quiz.id%>" data-total-questions="<%= @quiz.questions.count%>">
        <table>
   <% @questions.each do |question| %>
        <tr>
@@ -31,5 +31,12 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :quiz_id, value: @quiz.id %>
       <%= button_tag 'save results', type: 'submit', class: 'button' %>
+    <% end %>
+    <hr>
+    <%= link_to take_quiz_path(@quiz) do %>
+      <button class="button">Retake quiz</button>
+    <% end %>
+    <%= link_to root_path do %>
+      <button class="button">Take another quiz</button>
     <% end %>
 </div>
