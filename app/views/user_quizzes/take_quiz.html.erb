@@ -1,6 +1,6 @@
 <h2><%= @quiz.name %></h2>
 <hr>
-<div class="quiz-form">
+<div class="quiz-form" data-id="<%= @quiz.id%>">
        <table>
   <% @questions.each do |question| %>
        <tr>
@@ -24,8 +24,8 @@
 <div class="quiz-results">
     <h2 class="your-score"></h2>
     <img src="" alt="" class="personality-image" />
-    <%= render 'shared/reference_table', quiz: @quiz %>
     <%= form_for (UserResult.new ) do |f| %>
+      <%= f.hidden_field :personality_id, value: "" %>
       <%= f.hidden_field :points, value: "" %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :quiz_id, value: @quiz.id %>
