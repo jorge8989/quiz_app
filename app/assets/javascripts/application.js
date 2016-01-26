@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
-//= require_tree .
+//= require underscore-min
+//= require quiz_processor
 
 $(function(){ $(document).foundation(); });
