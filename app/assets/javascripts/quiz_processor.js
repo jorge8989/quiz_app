@@ -5,6 +5,7 @@ function processQuiz() {
   var $yourScore = $('.your-score');
   var $submitButton = $('.submit-quiz');
   var totalQuestions = $('.quiz-question').length
+  var $personalityDescription = $('.personality-description');
   var $pointsField = $('#user_result_points');
   var $personalityIdField = $('#user_result_personality_id');
   
@@ -39,6 +40,7 @@ function processQuiz() {
             var references = _.range(personality.low_range, personality.high_range+1);
             if (references.indexOf(points) != -1) {
               $personalityIdField.attr('value', personality.id);
+              $personalityDescription.text(personality.description);
             }
           });
          } 

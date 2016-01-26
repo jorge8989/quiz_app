@@ -1,28 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing User Results</h1>
-
+<h1>User Results</h1>
+<% @quizzes.each do |quiz| %>
+<h3><%= quiz.name %></h3>
 <table>
   <thead>
     <tr>
-      <th>Quiz</th>
       <th>User</th>
       <th>Points</th>
+      <th>result</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @user_results.each do |user_result| %>
+    <% quiz.user_results.each do |user_result| %>
       <tr>
-        <td><%= user_result.quiz.name %></td>
         <td><%= user_result.user.email %></td>
         <td><%= user_result.points %></td>
+        <td><%= user_result.personality.description %></td>
         <td><%= link_to 'See details', user_result_path(user_result) %></td>
         <td><%= link_to 'Destroy', user_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
+<hr>
+<% end %>

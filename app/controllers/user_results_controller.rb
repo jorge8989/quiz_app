@@ -2,7 +2,7 @@ class UserResultsController < ApplicationController
   before_action :set_user_result, only: [:destroy]
 
   def index
-    @user_results = UserResult.all.order('quiz_id ASC')
+    @quizzes = Quiz.all
   end
   
   def show
@@ -34,6 +34,6 @@ class UserResultsController < ApplicationController
     end
 
     def user_result_params
-      params.require(:user_result).permit(:points, :user_id, :quiz_id)
+      params.require(:user_result).permit(:points, :user_id, :quiz_id, :personality_id)
     end
 end

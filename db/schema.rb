@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125175444) do
+ActiveRecord::Schema.define(version: 20160126160330) do
 
   create_table "personalities", force: :cascade do |t|
     t.string   "name"
@@ -63,12 +63,14 @@ ActiveRecord::Schema.define(version: 20160125175444) do
 
   create_table "user_results", force: :cascade do |t|
     t.integer  "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "user_id"
     t.integer  "quiz_id"
+    t.integer  "personality_id"
   end
 
+  add_index "user_results", ["personality_id"], name: "index_user_results_on_personality_id"
   add_index "user_results", ["quiz_id"], name: "index_user_results_on_quiz_id"
   add_index "user_results", ["user_id"], name: "index_user_results_on_user_id"
 

@@ -24,6 +24,7 @@
 <div class="quiz-results">
     <h2 class="your-score"></h2>
     <img src="" alt="" class="personality-image" />
+    <p class="personality-description"></p>
     <%= form_for (UserResult.new ) do |f| %>
       <%= f.hidden_field :personality_id, value: "" %>
       <%= f.hidden_field :points, value: "" %>

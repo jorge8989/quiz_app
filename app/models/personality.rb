@@ -1,5 +1,6 @@
 class Personality < ActiveRecord::Base
     belongs_to :quiz
+    has_many  :user_results
     validates :description, presence: true
     validates :low_range, presence: true
     validates :high_range, presence: true
